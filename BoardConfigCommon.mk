@@ -36,15 +36,13 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
-TARGET_CPU_VARIANT_RUNTIME := cortex-a76
+TARGET_CPU_VARIANT := cortex-a76
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a76
+TARGET_2ND_CPU_VARIANT := cortex-a76
 
 # Audio
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
@@ -61,9 +59,6 @@ TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
-
-# Bluetooth
-TARGET_USE_QTI_BT_STACK := true
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
@@ -100,7 +95,6 @@ BOARD_KERNEL_CMDLINE := \
     androidboot.console=ttyMSM0 \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
-    androidboot.selinux=permissive \
     androidboot.usbcontroller=a600000.dwc3 \
     androidboot.vbmeta.avb_version=1.0 \
     loop.max_part=7 \
@@ -152,23 +146,17 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # Recovery
 ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS),true)
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/init/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/fstab.qcom
 else
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/init/fstab_non_dynamic.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/fstab_non_dynamic.qcom
 endif
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-# RIL
-ENABLE_VENDOR_RIL_SERVICE := true
-
-# Security
-VENDOR_SECURITY_PATCH := 2022-08-05
 
 # Sensors
 SOONG_CONFIG_NAMESPACES += ONEPLUS_MSMNILE_SENSORS
