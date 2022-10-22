@@ -4,6 +4,14 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Overlays
+PRODUCT_PACKAGES += \
+    AOSPAOPlusSM8150Frameworks \
+    AOSPAOPlusSM8150SystemUI \
+    OPlusSM8150Frameworks \
+    OPlusSM8150Settings \
+    OPlusSM8150SystemUI
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
@@ -237,14 +245,7 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw
 
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
-
 PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_PACKAGES += \
-    CarrierConfigResCommon \
-    FrameworksResTarget \
-    OPlusFrameworksResCommon
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
